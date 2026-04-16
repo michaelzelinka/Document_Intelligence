@@ -1,7 +1,3 @@
-"""
-Run once to create your first API key.
-Usage: DATABASE_URL="postgresql://..." python scripts/create_api_key.py "my-key-name"
-"""
 import sys
 import os
 import secrets
