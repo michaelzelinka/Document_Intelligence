@@ -1,4 +1,5 @@
 from fastapi import FastAPI, UploadFile, File, HTTPException, Depends, Query
+from fastapi.middleware.cors import CORSMiddleware
 from openai import OpenAI
 from typing import Literal
 import fitz
@@ -9,6 +10,14 @@ from app.database import init_db, save_extraction, get_extraction
 from app.auth import require_api_key
 
 app = FastAPI(title="Document Intelligence API")
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["https://document-intelligence-ui.onrender.com"],
+    allow_methods=["POST", "GET"],
+    allow_headers=["*"],
+)
+
 client = OpenAI(api_key=os.environ["OPENAI_API_KEY"])
 
 PROMPTS = {
