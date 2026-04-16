@@ -6,7 +6,7 @@ import fitz
 import json
 import os
 
-from app.database import init_db, save_extraction, get_extraction
+from app.database import init_db, save_extraction, get_extraction, get_connection, is_valid_api_key
 from app.auth import require_api_key
 
 app = FastAPI(title="Document Intelligence API")
